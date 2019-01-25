@@ -1,8 +1,8 @@
 {
-    "project_name": "Flask Boilerplate",
-    "project_slug": "flask_boilerplate",
-    "description": "Flask Boilerplate",
+    "project_name": "",
+    "project_slug": "{{ cookiecutter.project_name.lower().replace(' ', '_').replace('-', '_') }}",
+    "description": "",
     "version": "0.0.1",
-    "author": "Francisco Evangilo",
-    "author_email": "evangilo@gmail.com"
+    "author": "",
+    "author_email": ""
 }

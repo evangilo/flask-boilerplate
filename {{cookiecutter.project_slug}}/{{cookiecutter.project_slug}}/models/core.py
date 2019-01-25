@@ -1,8 +1,9 @@
 from datetime import datetime
 
 from sqlalchemy import Column, DateTime, Integer, String
+from sqlalchemy.ext.hybrid import hybrid_property
 
-from app import db
+from {{ cookiecutter.project_slug }}.app import db
 
 
 class Base(db.Model):
@@ -17,7 +18,7 @@ class User(Base):
     id = Column(Integer, primary_key=True)
     username = Column(String(80), index=True, unique=True)
     email = Column(String(255), index=True, unique=True)
-    password_hash = Column(db.String(128))
+    password = Column(String(128))
 
     def __repr__(self):
-        return f'<User(username={self.username})>'
+        return '<User(username={})>'.format(self.username)
