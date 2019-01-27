@@ -25,14 +25,10 @@ def client(app):
 @pytest.fixture
 def api_request(client):
     def request(method, endpoint, data=None, headers=None):
-        if not headers:
-            headers = dict()
-
-        headers['Content-Type'] = 'application/json'
-        if data:
-            data = json.dumps(data)
-        requester = getattr(client, method.lower())
-        return requester(endpoint, headers=headers, data=data)
+        # https://github.com/pallets/werkzeug/blob/master/werkzeug/test.py#L222
+        return client.open(method=method, path=path,
+                           headers=headers, json=data,
+                           content_type='application/json')
     yield request
 
 
