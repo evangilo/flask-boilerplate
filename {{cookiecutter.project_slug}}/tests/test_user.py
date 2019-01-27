@@ -1,5 +1,4 @@
 import json
-import uuid
 
 import pytest
 
@@ -24,11 +23,11 @@ def client(app):
 
 @pytest.fixture
 def api_request(client):
-    def request(method, endpoint, data=None, headers=None):
+    def request(method, endpoint, data=None, params=None, headers=None):
         # https://github.com/pallets/werkzeug/blob/master/werkzeug/test.py#L222
         return client.open(method=method, path=path,
-                           headers=headers, json=data,
-                           content_type='application/json')
+                           json=data, query_string=params,
+                           headers=headers, content_type='application/json')
     yield request
 
 
