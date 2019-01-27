@@ -21,3 +21,12 @@
 # Run server
 
 `FLASK_APP={{ cookiecutter.project_slug }}.app flask run`
+
+# Run tests
+
+`export {{ cookiecutter.project_slug|upper }}_SETTINGS=$(pwd)/test_settings.cfg`
+
+`pip install -r test_requirements.txt`
+
+`pytest -vv`
+
