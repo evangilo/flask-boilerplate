@@ -2,6 +2,7 @@ import os
 
 from setuptools import setup, find_packages
 
+
 ROOT = os.path.abspath(os.path.dirname(__file__))
 NAME = '{{ cookiecutter.project_slug }}'
 
