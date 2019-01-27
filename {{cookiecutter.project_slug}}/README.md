@@ -4,6 +4,12 @@
 
 `pip install -e .`
 
+# Export {{ cookiecutter.project_slug|upper }}_SETTINGS enviroment variable
+
+`cp settings.cfg.sample /etc/{{ cookiecutter.project_slug }}/production.cfg`
+
+`export {{ cookiecutter.project_slug|upper }}_SETTINGS=/etc/{{ cookiecutter.project_slug }}/production.cfg`
+
 # Setup database
 
 `FLASK_APP={{ cookiecutter.project_slug}}.app flask db init`

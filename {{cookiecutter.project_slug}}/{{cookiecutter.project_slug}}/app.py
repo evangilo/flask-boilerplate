@@ -9,7 +9,7 @@ from {{ cookiecutter.project_slug }} import auth
 
 
 app = Flask(__name__)
-app.config.from_object('config')
+app.config.from_envvar('{{ cookiecutter.project_slug|upper }}_SETTINGS')
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 jwt = JWTManager(app)
