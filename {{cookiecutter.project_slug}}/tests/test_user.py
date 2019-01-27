@@ -23,7 +23,7 @@ def client(app):
 
 @pytest.fixture
 def api_request(client):
-    def request(method, endpoint, data=None, params=None, headers=None):
+    def request(method, path, data=None, params=None, headers=None):
         # https://github.com/pallets/werkzeug/blob/master/werkzeug/test.py#L222
         return client.open(method=method, path=path,
                            json=data, query_string=params,
