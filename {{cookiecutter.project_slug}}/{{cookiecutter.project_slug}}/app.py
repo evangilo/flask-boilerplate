@@ -15,6 +15,3 @@ migrate = Migrate(app, db)
 jwt = JWTManager(app)
 
 from {{ cookiecutter.project_slug }}.api import *
-
-if __name__ == '__main__':
-    app.run()
