@@ -12,13 +12,19 @@ def gen_password_hash(password):
 
 def authenticate(username, password):
     from {{ cookiecutter.project_slug }}.models.core import User
-
     user = User.query.filter_by(username=username).first()
     if user and check_password(user.password, password):
         return user
     return None
 
 
-def identity(payload):
+def create_token(user):
+    from flask_jwt_extended import create_access_token
+    return create_access_token(identity=user.username)
+
+
+def get_logged_user():
+    from flask_jwt_extended import get_jwt_identity
     from {{ cookiecutter.project_slug }}.models.core import User
-    return User.query.get(payload['identity'])
+    username = get_jwt_identity()
+    return username and User.query.filter_by(username=username).first()

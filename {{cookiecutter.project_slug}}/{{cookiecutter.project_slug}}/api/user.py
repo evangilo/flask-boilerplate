@@ -1,16 +1,16 @@
 # -*- coding: utf-8 -*-
 from flask import request, jsonify
-from flask_jwt import jwt_required, current_identity
+from flask_jwt_extended import jwt_required
 
+from {{ cookiecutter.project_slug }} import auth
 from {{ cookiecutter.project_slug }}.app import db, app
-from {{ cookiecutter.project_slug }}.auth import gen_password_hash
 from {{ cookiecutter.project_slug }}.models import core
 
 
 @app.route('/api/v1/user/me', methods=['GET'])
-@jwt_required()
+@jwt_required
 def user_me():
-    user = current_identity
+    user = auth.get_logged_user()
     return jsonify({
         'username': user.username,
         'email': user.email
@@ -22,7 +22,7 @@ def user_create():
     data = request.json
     username = data['username']
     email = data['email']
-    password = gen_password_hash(data['password'])
+    password = auth.gen_password_hash(data['password'])
 
     db.session.add(core.User(
         username=username,
