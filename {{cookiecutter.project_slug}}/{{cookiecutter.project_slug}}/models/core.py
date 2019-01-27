@@ -1,7 +1,6 @@
 from datetime import datetime
 
 from sqlalchemy import Column, DateTime, Integer, String
-from sqlalchemy.ext.hybrid import hybrid_property
 
 from {{ cookiecutter.project_slug }}.app import db
 
