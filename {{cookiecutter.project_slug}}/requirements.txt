@@ -1,6 +1,6 @@
 alembic==1.0.5
 Flask==1.0.2
-Flask-JWT-Extended@git+https://github.com/vimalloc/flask-jwt-extended
+Flask-JWT-Extended==3.17.0
 Flask-Migrate==2.3.1
 Flask-SQLAlchemy==2.3.2
 SQLAlchemy==1.2.15
